@@ -1,0 +1,671 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>McFreedyLang 이밴트 목록</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="bdd44072-f611-4f73-b467-abe1e48414a4" class="page sans"><header><h1 class="page-title">McFreedyLang 이밴트 목록</h1></header><div class="page-body"><h3 id="a1f9f240-131c-48d0-9ef8-7f177d3b52e7" class="">@join</h3><p id="8fef3696-2aa2-4339-b1c0-6e839001397e" class="">플레이어가 서버에 참여 했을 때</p><table id="c777aa4b-6482-4288-8135-0c784ec2ccc6" class="simple-table"><tbody><tr id="01c5b7dc-e870-4bed-a67f-8cf7282d3a24"><td id="MdX[" class="">message</td><td id="~ppx" class="">입장 알림 텍스트</td></tr><tr id="cb449bc0-af94-4696-a994-b42808a767c0"><td id="MdX[" class="">player</td><td id="~ppx" class="">플레이어</td></tr></tbody></table><h3 id="40ee340a-c9e2-467f-a2d0-4c4fb1438367" class="">@left</h3><p id="62b07a40-7e97-4371-88b5-bbfb1c284869" class="">플레이어가 서버를 떠났을 때</p><table id="39736e6d-7ac3-4bc2-914b-c5c334b46ed3" class="simple-table"><tbody><tr id="f5f37e6c-c77d-4f7f-b2a5-49d7cc782589"><td id="iomk" class="">message</td><td id="Vv?p" class="">퇴장 알림 텍스트</td></tr><tr id="0c1a40fd-d2b2-4b1d-aa6c-7af9fda4402e"><td id="iomk" class="">player</td><td id="Vv?p" class="">플레이어</td></tr></tbody></table><h3 id="7bf12cc8-a0b9-4c7c-b3b8-464188e442a5" class="">@interact</h3><table id="cfea364d-3264-42b9-a536-6d0ad2c941ab" class="simple-table"><tbody><tr id="0b9198b9-2809-4845-bf57-cc2bda4c2e25"><td id=";YRR" class="">action</td><td id="y`}_" class="">상호작용의 종류</td></tr><tr id="737fc443-7297-4550-a0e9-aa487f537baf"><td id=";YRR" class="">hand</td><td id="y`}_" class="">상호작용한 손</td></tr><tr id="7fc03fa7-97b8-4390-8676-83238afbcc8f"><td id=";YRR" class="">blockFace</td><td id="y`}_" class="">클릭한 블럭의 방향</td></tr><tr id="9e3293b7-f7a0-49d4-80a3-d8d3a95b3d1c"><td id=";YRR" class="">clickedBlock</td><td id="y`}_" class="">클릭한 블럭</td></tr><tr id="63b200a4-c28e-4f94-abdb-a8096f04eac0"><td id=";YRR" class="">item</td><td id="y`}_" class="">사용한 아이템</td></tr><tr id="40c922d1-62ce-4272-a642-d5f371065d0c"><td id=";YRR" class="">material</td><td id="y`}_" class="">사용한 아이템의 물질</td></tr><tr id="496a899a-1ab6-4907-a597-f1a333e4d2db"><td id=";YRR" class="">player</td><td id="y`}_" class="">플레이어</td></tr><tr id="e81309e0-3b3d-4b42-8299-7904fca691d6"><td id=";YRR" class="">cancelled</td><td id="y`}_" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="c44290cc-c7fd-4293-9b81-81dfc555a8ed" class="">@chat</h3><table id="1bde8218-9631-4296-935f-0848d3257e8a" class="simple-table"><tbody><tr id="1d666dbb-48ca-4183-be89-d41ffd2a4b24"><td id=";YRR" class="">format</td><td id="y`}_" class="">채팅을 띄우기 위한 포멧</td></tr><tr id="f7b21262-ad79-481c-a000-b3d3eba36bbe"><td id=";YRR" class="">message</td><td id="y`}_" class="">플레이어가 보낸 매시지</td></tr><tr id="d628170b-db04-4339-863a-fb91d76195c1"><td id=";YRR" class="">player</td><td id="y`}_" class="">플레이어</td></tr><tr id="532582ea-e6a4-44cb-a196-4aa1c9262234"><td id=";YRR" class="">cancelled</td><td id="y`}_" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="1104e3e7-ae57-4513-b2bd-f6baa55e4fd8" class="">@command</h3><table id="d69cee97-d023-4aed-ae35-8b49b37ee6bd" class="simple-table"><tbody><tr id="a861e732-9e8d-47c8-986a-82ea79726285"><td id=";YRR" class="">message</td><td id="y`}_" class="">플레이어가 보낸 매시지</td></tr><tr id="42c3f985-4c77-4646-b7f2-4a326387fc62"><td id=";YRR" class="">player</td><td id="y`}_" class="">플레이어</td></tr><tr id="69c1ebdd-a072-4faa-8484-c00ae02f237d"><td id=";YRR" class="">cancelled</td><td id="y`}_" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="5de76ae5-b76b-48fa-a29b-1c44f922dfdf" class="">@move</h3><table id="eb157b39-cfc1-46d3-990b-a2bc0dac2ea5" class="simple-table"><tbody><tr id="e5207801-747a-46de-99cc-d2f662d98ce0"><td id=";YRR" class="">to</td><td id="y`}_" class="">이동된 위치</td></tr><tr id="a8da1d0a-fed3-4fdb-8ca6-34d03143d083"><td id=";YRR" class="">from</td><td id="y`}_" class="">이동해온 위치</td></tr><tr id="59111da7-8115-45e4-9071-78779d99acf7"><td id=";YRR" class="">player</td><td id="y`}_" class="">플레이어</td></tr><tr id="818e1579-113f-4e57-9900-0793eda761b2"><td id=";YRR" class="">cancelled</td><td id="y`}_" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="eb684be3-0dc5-4423-b8f6-d10d77ab7a4c" class="">@inventoryclick</h3><table id="5244630d-b0fc-4539-bce3-f396667c04bf" class="simple-table"><tbody><tr id="d764374f-ed5a-438b-9ab1-6f57149f66a0"><td id=";YRR" class="">action</td><td id="y`}_" class="">클릭이 발동된 엑션</td></tr><tr id="be0fe929-9e12-4912-b90c-70d671560c2c"><td id=";YRR" class="">click</td><td id="y`}_" class="">클릭의 종류</td></tr><tr id="4da8613f-6cf3-486d-af86-26bbfaf69116"><td id=";YRR" class="">inventory</td><td id="y`}_" class="">클릭한 인벤토리</td></tr><tr id="cd5546db-b7f1-4814-aba7-babcef72c56d"><td id=";YRR" class="">currentItem</td><td id="y`}_" class="">클릭된 아이템</td></tr><tr id="54667498-b0f4-4e6c-bc4d-ff4bab66e32d"><td id=";YRR" class="">cursor</td><td id="y`}_" class="">커서 아이템</td></tr><tr id="5eb697a5-a831-4ca8-9a71-2659e781418b"><td id=";YRR" class="">slot</td><td id="y`}_" class="">슬롯 숫자</td></tr><tr id="e8b2a999-8701-4dff-a208-a89117acf2c6"><td id=";YRR" class="">hotbar</td><td id="y`}_" class="">0부터 8까지의 클릭한 핫바 슬롯 
+핫바를 클릭하지 않으면 -1</td></tr><tr id="f47f507d-2ae7-468a-a62c-0d260b2efd5c"><td id=";YRR" class="">player</td><td id="y`}_" class="">플레이어</td></tr><tr id="bd854aab-c5de-4250-a4e1-4d191f0173e1"><td id=";YRR" class="">cancelled</td><td id="y`}_" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="b191e8cd-e037-4c57-8412-a0f42b9d158f" class="">@inventorydrag</h3><table id="10c1f2fe-3e00-4155-944e-b6648df8d0af" class="simple-table"><tbody><tr id="1b3992ad-ace6-4bb0-902f-7945f7c888c0"><td id="wjsn" class="">dragType</td><td id="ol=X" class="">드래그 종류</td></tr><tr id="7b61ec3c-31e5-40e4-865e-1ed757f5da63"><td id="wjsn" class="">oldCursor</td><td id="ol=X" class="">기존 커서 아이템</td></tr><tr id="f8517774-d23e-4e24-825e-12eaa0949fba"><td id="wjsn" class="">cursor</td><td id="ol=X" class="">커서 아이템</td></tr><tr id="87934137-7ff3-4818-b7b2-26fc3f9976d6"><td id="wjsn" class="">inventory</td><td id="ol=X" class="">드래그한 인벤토리</td></tr><tr id="efbed9d6-9e12-41fb-8942-ff3265bfe303"><td id="wjsn" class="">player</td><td id="ol=X" class="">플레이어</td></tr><tr id="7630654d-c952-4234-8db4-e08a2944ad2b"><td id="wjsn" class="">cancelled</td><td id="ol=X" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="40a6fb2b-ac55-406e-a8e7-b7e8c63efc6e" class="">@inventoryclose</h3><table id="9037d2ea-f46d-4fdc-b506-8760223638d5" class="simple-table"><tbody><tr id="2c6f9caa-a845-45d5-8e48-619f0f023e21"><td id="\H^Q" class="">player</td><td id="qHAn" class="">플레이어</td></tr><tr id="e66498a9-3844-4c3d-8525-2ee7dbe86318"><td id="\H^Q" class="">inventory</td><td id="qHAn" class="">닫은 인벤토리</td></tr></tbody></table><h3 id="2c45e7d1-8c81-4967-ba15-5781c1de2977" class="">@damagebyentity</h3><table id="9dad42d5-e547-4326-a2c1-d47328e9b770" class="simple-table"><tbody><tr id="176d649b-d0c0-4da8-8ef3-b966adf94920"><td id="\H^Q" class="">damager</td><td id="qHAn" class="">데미지를 준 엔티티</td></tr><tr id="04342188-c5c2-4773-b7e0-67357c8446d4"><td id="\H^Q" class="">entity</td><td id="qHAn" class="">데미지를 받은 엔티티</td></tr><tr id="05cefc34-d186-44f5-8b14-35c459f273dc"><td id="\H^Q" class="">damage</td><td id="qHAn" class="">데미지</td></tr><tr id="c03fb65d-8f73-40b1-8a92-aa0080c9e124"><td id="\H^Q" class="">finalDamage</td><td id="qHAn" class="">최종 데미지</td></tr><tr id="50a97886-d57a-41cc-83c9-be6983f15a0c"><td id="\H^Q" class="">cause</td><td id="qHAn" class="">데미지 원인</td></tr><tr id="84425da9-7418-49be-9c7e-a4919a588b59"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="a75a6067-17d6-4491-ad94-e45f421fccca" class="">@damagebyblock</h3><table id="29f420a6-d83b-46c7-9c0c-5240b8bce8d7" class="simple-table"><tbody><tr id="29c257ed-8be9-49d7-9a9a-c441cecba466"><td id="\H^Q" class="">damager</td><td id="qHAn" class="">데미지를 준 블럭</td></tr><tr id="2d6ee340-bb72-4ee4-b616-5297d6665d41"><td id="\H^Q" class="">entity</td><td id="qHAn" class="">데미지를 받은 엔티티</td></tr><tr id="cc7a5ac1-8184-439b-8b84-097ac8814e11"><td id="\H^Q" class="">damage</td><td id="qHAn" class="">데미지</td></tr><tr id="a3db01cd-338a-4696-9a1e-24391f187141"><td id="\H^Q" class="">finalDamage</td><td id="qHAn" class="">최종 데미지</td></tr><tr id="b734b3a8-3242-45fe-8ecb-30998a7455a4"><td id="\H^Q" class="">cause</td><td id="qHAn" class="">데미지 원인</td></tr><tr id="c32be786-4136-4768-bf2e-004dca1cddb0"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="64c288ff-1112-4c76-978c-e50689a4b597" class="">@damage</h3><table id="f2b05b9e-91be-40f2-b72e-af848c767917" class="simple-table"><tbody><tr id="df011c1a-5d7c-44bd-b226-413abf4cc68a"><td id="\H^Q" class="">damage</td><td id="qHAn" class="">데미지</td></tr><tr id="15b7d161-16e5-43a4-9e30-546a9de55a7e"><td id="\H^Q" class="">finalDamage</td><td id="qHAn" class="">최종 데미지</td></tr><tr id="d0ea387e-ca8a-465c-9b78-474fbbb80329"><td id="\H^Q" class="">cause</td><td id="qHAn" class="">데미지 원인</td></tr><tr id="348a1161-a96a-4596-a597-eb2a3b7d5495"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="8d472929-d78d-452b-8561-0a784d5a980f" class="">@projectilehit</h3><table id="df1549f0-f3cf-4c9a-a158-1827d5c3df01" class="simple-table"><tbody><tr id="5c2a8d83-4a25-4fe5-a18c-abbc41f85733"><td id="\H^Q" class="">hitBlock</td><td id="qHAn" class="">맞은 블럭</td></tr><tr id="66aa02ab-53d2-4185-a416-9be1d33ea465"><td id="\H^Q" class="">hitEntity</td><td id="qHAn" class="">맞은 엔티티</td></tr><tr id="b1e2d556-5f2c-421a-8745-41b2663d0bfe"><td id="\H^Q" class="">blockFace</td><td id="qHAn" class="">블럭의 맞은 방향</td></tr><tr id="8be0d35b-0713-4388-8e4f-53e12a6be7e1"><td id="\H^Q" class="">entity</td><td id="qHAn" class="">맞은 엔티티</td></tr><tr id="7df3aa3d-44d9-489a-a91a-e82dff44f32c"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="8623b310-52b7-48e6-b585-b9865e2dc171" class="">@projectilelaunch</h3><table id="15a4be3a-7cc5-4d1c-8027-921d22cbd39f" class="simple-table"><tbody><tr id="bef8f96f-c876-42c2-aa90-2d517d063c4f"><td id="\H^Q" class="">location</td><td id="qHAn" class="">위치</td></tr><tr id="cd7047cc-badb-4658-a384-75bc6fe0d285"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="599f38fc-a28c-4623-8329-4877341ce395" class="">@entityspawn</h3><table id="9cb63057-452e-4263-ac3f-585b80e26e04" class="simple-table"><tbody><tr id="b8881b82-b082-4b50-a8ee-497baee7c1f1"><td id="\H^Q" class="">location</td><td id="qHAn" class="">스폰 위치</td></tr><tr id="e2d48980-cef0-4b2b-a147-0734cf3363b9"><td id="\H^Q" class="">entity</td><td id="qHAn" class="">스폰 엔티티 </td></tr><tr id="5445c386-5348-41d3-9ebf-e669e622a803"><td id="\H^Q" class="">cancelled</td><td id="qHAn" class="">취소됬는지 조건값</td></tr></tbody></table><h3 id="53aee512-9b6d-4ed5-94dc-479462d7000a" class="">@entitydeath</h3><table id="d3066b13-ea6a-4955-b5b6-eb65e04d8be9" class="simple-table"><tbody><tr id="5067c94b-9836-47c9-bc71-e6ad087a54f8"><td id="\H^Q" class="">droppedExp</td><td id="qHAn" class="">떨군 경험치</td></tr><tr id="c007568d-dbda-4df0-8810-9a51a85a3b3f"><td id="\H^Q" class="">entity</td><td id="qHAn" class="">죽은 엔티티</td></tr></tbody></table><p id="ed158db7-2cd3-485f-bcb1-f60ca5114a96" class="">
+</p></div></article></body></html>

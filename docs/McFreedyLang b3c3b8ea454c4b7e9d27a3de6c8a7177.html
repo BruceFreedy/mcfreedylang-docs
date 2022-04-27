@@ -1,0 +1,759 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>McFreedyLang</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="911ce471-0dca-4893-ad9d-e26f66aba72d" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🛥️</span></div><h1 class="page-title">McFreedyLang</h1></header><div class="page-body"><h1 id="40b21cbc-037a-4ed0-b488-e77c97d137e3" class="">목표</h1><blockquote id="e1732f68-1d73-4aa5-9631-f1922c9e95c8" class="">마인크래프트 콘텐츠를 간단한 방법을 사용해서 제작할 수 있습니다.</blockquote><p id="88352ddd-d97f-40f1-852b-0f55d054271f" class="">
+</p><h1 id="9d91f2b1-0c11-4e67-92aa-51d7b91e5cb4" class="">FreedyLang</h1><h1 id="a385233b-9f16-42c4-b892-2ae6d4e086b0" class="">목표</h1><blockquote id="004c4b51-bdac-445a-aa9f-e980ef5447eb" class=""><span style="border-bottom:0.05em solid">콘텐츠를 설계하고 구현하는 과정을 간단하고 빠르게 만듭니다.</span></blockquote><h2 id="5128e511-2d86-4c7f-97e4-14023b3ff212" class="">주제 </h2><p id="4dd7eb39-3c51-447e-b0c1-4421b8e45a8b" class="">텍스트를 입력하여 알고리즘을 구현합니다.
+텍스트의 종류와 특징을 알아봅니다.
+</p><h3 id="204ba38d-adb0-4394-bbc7-b4917f91f100" class="">텍스트의 종류</h3><ol type="1" id="776946bf-9fed-4c59-bb37-7a6fbf98b7de" class="numbered-list" start="1"><li>주석</li></ol><ol type="1" id="77080663-9349-4f2d-951d-ba99f62ac402" class="numbered-list" start="2"><li>변수</li></ol><ol type="1" id="869d6c6d-8485-4a11-8bff-09d1331d7d3a" class="numbered-list" start="3"><li>산술</li></ol><ol type="1" id="d1983bb2-0e44-4a2b-9205-384536a88ded" class="numbered-list" start="4"><li>몸통</li></ol><ol type="1" id="35f03d31-954c-4c09-9005-1acdd38e5ad0" class="numbered-list" start="5"><li>함수</li></ol><ol type="1" id="4a2da034-ee58-47ac-8640-cc67f8141ab8" class="numbered-list" start="6"><li>조건</li></ol><ol type="1" id="567cb378-3078-48f8-928b-35804831727d" class="numbered-list" start="7"><li>반복</li></ol><ol type="1" id="9243b272-c5de-4557-8b00-b2ac2f9a5ed8" class="numbered-list" start="8"><li>클래스</li></ol><p id="0657630f-fc0e-4cf5-8c07-2d2110db7be8" class="">
+</p><h3 id="6b420583-cd7a-4898-a7c1-32d2f61b355f" class="">주석</h3><p id="78ba7f63-851b-4e81-b0c5-b0c83e4a8ed1" class="">프로그래밍 설계도, 즉 소스 코드에서 모든 텍스트는 컴퓨터가 인식해서 작동하지만,
+<span style="border-bottom:0.05em solid">주석은 프로그래밍에 있어 메모하는 목적</span>으로 쓰입니다. 
+소스 코드를 더 쉽게 이해할 수 있게 만드는 것이 주 목적입니다.</p><p id="d9873cf6-f74a-438b-9ef7-e68aa8fac176" class="">한줄만 메모하고 싶을 때는 한줄 주석을 사용합니다.
+한줄 주석은 슬래쉬 2개(//)로 작성하고 그 오른쪽은 모두 주석이 됩니다.</p><pre id="f208fa98-c4d9-4e84-afd6-4921d8e68b2a" class="code"><code>(소스코드..) //여기는 주석입니다 이 소스코드가 무엇인지 메모하기 위해 존재합니다</code></pre><p id="aeacb4c7-f97f-431b-9c4d-869b37b925dc" class="">여러줄을 주석으로 작성하고 싶을 때는 여러줄 주석을 사용합니다.
+여러줄 주석은 슬래쉬와 별표(/*)로 시작해서 별표와 슬래쉬(*/)로 끝나며, 
+그 사이가 모두 주석이 됩니다.</p><pre id="33445a59-d7e1-4069-93a0-aa3b9daf9126" class="code"><code>/*
+	여기는 주석입니다 이 소스코드가 무엇인지 메모하기 위해 존재합니다
+*/</code></pre><h3 id="fa8fcbdd-01d8-4202-93b4-66e9ce911bab" class="">변수</h3><p id="353e00fe-64bc-40a3-a20c-d8c740d01fff" class="">변수는 쉽게 말하면, 값을 담아놓는 바구니입니다.
+임의로 설정한 A라는 문자, 즉 변수가 있다고 가정할 때, 
+A의 값을 할당 또는 변경하고, 불러와서 가져올 수 있습니다.</p><p id="878303b1-0dfb-4c3b-9b07-24c3f8c87034" class="">먼저, 변수 A에 값을 할당할 때는 할당 연산자를 사용합니다.
+할당 연산자는 수학에서의 같다(=) 기호 문자이고,
+그 <span style="border-bottom:0.05em solid">기호를 기준으로 오른쪽에 있는 것을 왼쪽 변수에 할당</span>하는 의미입니다.</p><pre id="4ad7e278-aabe-42b2-bbc6-2dc83ef0074d" class="code"><code>A = 777 //A변수의 값을 777로 할당합니다</code></pre><h3 id="7421c801-a484-4b87-a7b0-86329b23d65f" class="">산술 </h3><p id="e4b6ed67-1b28-4454-9a9e-f731252bb1de" class="">수에 대하여 간단한 계산을 하는 방법을 말합니다.
+더하기, 빼기, 곱하기, 나누기, 나머지, 제곱, 총 6가지가 있습니다. </p><pre id="6a58f5bc-c65d-483d-bd96-2749c8a6cdee" class="code"><code>A = 2 + 2  //더하기
+B = 2 - 2  //빼기
+C = 2 * 2  //곱하기
+D = 2 / 2  //나누기
+E = 2 % 2  //나머지
+F = 2 ** 2  //제곱
+G = (3 + 4) * 5  //응용</code></pre><h3 id="8412bcd9-b203-458c-b11c-03eee7bf7085" class="">몸통</h3><p id="3ee70e82-ee2c-4036-aa17-bbe82d5516f7" class="">몸통은 쉽게 말해 텍스트 모아놓은 더미입니다. 
+텍스트끼리 서로 구분하거나 사용하기 위해서 묶어 놓은 것입니다
+몸통 안쪽에서 바깥의 변수를 사용할 수는 있지만, 
+반대로 바깥쪽에서 안쪽의 변수를 사용할 수는 없습니다.</p><pre id="2f7a92c8-30c9-4b8a-96d9-d37966d6ce5e" class="code"><code>( ) { } [ ]  //모두 몸통을 의미하며 서로 다른 특징이 없습니다.
+//단, 시작하는 기호와 끝나는 기호의 종류가 같아야 한 몸통을 이룹니다.</code></pre><h3 id="af33b3ec-96ed-419d-a87a-7d31a5d51583" class="">함수</h3><figure id="b3c3b8ea-454c-4b7e-9d27-a3de6c8a7177" class="image"><a href="funcExplain.png"><img style="width:240px" src="funcExplain.png"/></a></figure><ol type="1" id="d8d6e757-4612-4168-91b5-c7bce2c334e6" class="numbered-list" start="1"><li>함수 A를 사용하는 방법</li></ol><ol type="1" id="cf75f92e-c14e-4470-8233-803a89a63579" class="numbered-list" start="2"><li>함수 A의 알고리즘을 만드는 방법</li></ol><pre id="9c0b2c44-eb33-4085-b45b-13e531a58a12" class="code"><code>A(숫자) {    //입력받은 값에 4를 더한 값을 출력하는 함수를 만듭니다
+	return 숫자+4 
+}
+
+B() {        //10을 출력하는 함수를 만듭니다
+	return 10
+}
+
+결과 = A(2)  //A 함수를 2라는 값으로 호출합니다
+결과 = B     //A 함수를 호출할 때 몸통을 생략할 수 있습니다</code></pre><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="acf1be10-d150-44dd-8496-f17d2525a56a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">A 함수를 만들 때 함수 이름 뒤에 몸통이 2개 나란히 있습니다. 
+첫번째 몸통에는 입력된 값을 담는 변수를 작성하고,
+두번째 몸통에는 함수의 알고리즘을 작성합니다.
+”return”은 함수의 반환값을 정할 때 사용합니다.</div></figure><pre id="f909d619-6672-4dd7-8819-c28d87103475" class="code"><code>b() {
+	A = []  //빈 몸통 A를 할당
+	A.add(&quot;Hello, World!&quot;)  //A에 Hello, World!라는 텍스트를 추가함
+	A.add(&quot;bump&quot;)  //A에 bump라는 텍스트를 추가함
+	A.remove(&quot;bump&quot;)  //A에 bump라는 텍스트를 삭제함
+	return A
+}
+
+결과 = b</code></pre><h3 id="aea89fbf-601c-4b3f-a0ec-b1bfbe70c031" class="">조건</h3><p id="e0382bdb-8290-4dca-a119-84b910a0e611" class="">맞느냐 맞지 않느냐라는 두가지 결과만이 존재하는 조건값은 참(true), 거짓(false)이 있습니다.</p><pre id="4c62a6ed-2af6-4aad-81b1-8d7006f90371" class="code"><code>결과 = A &lt; B  //왼쪽 값이 오른쪽 값보다 작을 때 참을 반환함
+결과 = A &lt;= B   //왼쪽 값이 오른쪽 값보다 작거나 같을 때 참을 반환함
+결과 = A &gt; B  //왼쪽 값이 오른쪽 값보다 클 때 참을 반환함
+결과 = A &gt;= B  //왼쪽 값이 오른쪽 값보다 크거나 같을 때 참을 반환함
+결과 = A == B  //왼쪽 값과 오른쪽 값이 같을 때 참을 반환함
+결과 = A != B  //왼쪽 값과 오른쪽 값이 다를 때 참을 반환함
+결과 = !(A == B)  //부정연산자는 입력된 조건값을 반대로 반환함</code></pre><p id="aaac9fc3-106c-4500-9113-b06fc3f3068f" class="">두 텍스트 중 조건값에 따라 하나만 실행합니다.</p><pre id="2aa315b9-e583-4fcc-aed1-96ec363323c0" class="code"><code>if (A == B) {
+	//조건이 참일 경우 실행되는 몸통
+	결과 = &#x27;같습니다&#x27;
+}
+else {
+	//조건이 거짓일 경우 실행되는 몸통
+	결과 = &#x27;다릅니다&#x27; 
+}</code></pre><pre id="60e41e92-5141-41bc-9128-759b8a103ff1" class="code"><code>if (숫자 &lt; 0) 결과 = &#x27;숫자가 음수입니다&#x27;
+else if (숫자 == 0) 결과 = &#x27;숫자가 0입니다&#x27;
+else if (숫자 &gt; 0) 결과 = &#x27;숫자가 양수입니다&#x27;
+else 결과 = &#x27;숫자가 아닙니다&#x27;</code></pre><pre id="eed9c86e-372c-4a9f-821a-9c8ffe144aa2" class="code"><code>if (A == B &amp;&amp; C == D &amp;&amp; E == F) ...  //AND 연산자(&amp;&amp;)는 양쪽 값이 모두 참일 때 참
+if (A == b || C == D || E == F) ...  //OR 연산자(||)는 양쪽 값중 하나라도 참일 때 참
+if (A == B &amp;&amp; C == D || E == F) ...  //A와 B가 같고 C와 D와 같거나, E와 F가 같을 때 참</code></pre><h3 id="9bbac569-4943-4cc5-84dc-0e2e90b2e104" class="">반복</h3><p id="6d55bc11-12cd-4c53-969b-bec0d196897a" class="">조건이 참일 동안만 텍스트를 반복합니다.</p><pre id="8794e0b8-454f-437a-8e88-0bcc8d4f390b" class="code"><code>num = 0
+while (num &lt; 10) {  //값이 참일 경우 몸통을 실행하고 값이 거짓일 때까지 반복합니다
+	...
+	num = num + 1
+}
+//결과는 0에서 부터 9까지 입니다</code></pre><pre id="2594b5a4-29a9-46b3-8b47-54282ab28bac" class="code"><code>//for(초기값, 조건값, 증감값)
+for(i = 0; i &lt; 10; i++) {
+	...
+}
+//1. 초기값을 실행한다
+//2. 조건값이 참이면 3으로 이동하고 거짓이면 4번으로 이동한다
+//3. 몸통을 실행한 후 증감값을 실행하고 2로 이동한다
+//4. 종료</code></pre><h3 id="55c40daa-d813-45f1-ae2e-d00ef283026f" class="">클래스</h3><p id="4591c80e-d2c5-4361-ae04-c3c4510815fc" class="">변수와 함수를 담아놓을 수 있습니다</p><pre id="0fa4d7ae-57cd-4106-8a5c-b7325b921236" class="code"><code>class 강아지 {
+	나이 = 5
+	이름 = 프리디
+}
+
+결과 = 강아지.이름 + &quot;의 나이는 &quot; 강아지.나이 + &quot;살 입니다.&quot;  //응용
+//참조 연산자(.)로 클래스의 변수나 함수를 가져올 수 있습니다</code></pre><p id="5f1e0264-f3eb-42c1-bb56-6034c61e6cdb" class=""> </p><pre id="36cb98b8-fdb9-480c-a0ad-911de8eaaf05" class="code"><code>//응용
+class 강아지 { 이름 = 프리디 }
+class 주인 { 애완동물() { return 강아지 } }
+결과 = 주인.애완동물.이름</code></pre><p id="e1627bf2-ae10-41de-9b9a-0b360e6a70a7" class="">
+</p><figure id="8c771428-e31a-483b-aee5-1ce915901d63" class="link-to-page"><a href="FreedyLang%20%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%20%E1%84%86%E1%85%A9%E1%86%A8%E1%84%85%E1%85%A9%E1%86%A8%208c771428e31a483baee51ce915901d63.html">FreedyLang 함수 목록</a></figure><p id="f4dad82a-ab21-4138-8a9f-1c8c0f9ee413" class="">
+</p><blockquote id="54c8a467-4b50-45f4-9111-1c40a20a56ea" class="">FreedyLang 에 대한 내용은 여기까지 입니다. </blockquote><p id="4c20dd88-31f8-4dd2-92ef-ed521e1b1162" class="">
+</p><hr id="1eeb3652-31e2-4d61-8aa7-4c6b200075d7"/><h2 id="dbc825f0-6b51-44be-8244-583cde1344aa" class="">McFreedyLang</h2><figure id="8245720b-0ce2-44f6-a407-2376a9611de4" class="link-to-page"><a href="McFreedyLang%20%E1%84%92%E1%85%A1%E1%86%B7%E1%84%89%E1%85%AE%20%E1%84%86%E1%85%A9%E1%86%A8%E1%84%85%E1%85%A9%E1%86%A8%208245720b0ce244f6a4072376a9611de4.html">McFreedyLang 함수 목록</a></figure><figure id="bdd44072-f611-4f73-b467-abe1e48414a4" class="link-to-page"><a href="McFreedyLang%20%E1%84%8B%E1%85%B5%E1%84%87%E1%85%A2%E1%86%AB%E1%84%90%E1%85%B3%20%E1%84%86%E1%85%A9%E1%86%A8%E1%84%85%E1%85%A9%E1%86%A8%20bdd44072f6114f73b467abe1e48414a4.html">McFreedyLang 이밴트 목록</a></figure><p id="05dec59f-a41b-4b45-a8bd-aa3fa78967b2" class="">
+</p><figure id="d55ec193-85c3-4f9a-af20-6842f8598740" class="link-to-page"><a href="McFreedyLangAddon%20d55ec19385c34f9aaf206842f8598740.html">McFreedyLangAddon</a></figure><p id="beef74eb-8ccd-4671-aa93-4164f2e84549" class="">
+</p></div></article></body></html>
